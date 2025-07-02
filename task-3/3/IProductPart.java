@@ -1,0 +1,4 @@
+package carassembly;
+
+interface IProductPart {
+}
