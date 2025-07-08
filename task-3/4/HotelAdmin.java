@@ -1,4 +1,4 @@
-package hotel;
+package hotel3;
 
 import java.util.*;
 
@@ -20,10 +20,10 @@ public class HotelAdmin {
         }
     }
 
-    public void checkIn(int roomNumber) {
+    public void checkIn(int roomNumber, Guest guest) {
         Room room = rooms.get(roomNumber);
         if (room != null) {
-            room.checkIn();
+            room.checkIn(guest);
         } else {
             System.out.println("Номер не найден");
         }
@@ -38,7 +38,7 @@ public class HotelAdmin {
         }
     }
 
-    public void setRoomStatus(int roomNumber, String status) {
+    public void setRoomStatus(int roomNumber, RoomStatus status) {
         Room room = rooms.get(roomNumber);
         if (room != null) {
             room.setStatus(status);

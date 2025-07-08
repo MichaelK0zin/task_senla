@@ -1,4 +1,4 @@
-package hotel;
+package hotel3;
 
 public class Service {
     private final String name;

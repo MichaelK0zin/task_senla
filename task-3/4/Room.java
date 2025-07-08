@@ -1,39 +1,43 @@
-package hotel;
+package hotel3;
 
 public class Room {
-    public static final String Available = "Свободен";
-    public static final String Occupied = "Занят";
-    public static final String Maintenace = "Обслуживание";
-
     private final int number;
     private double price;
-    private String status;
+    private RoomStatus status;
 
     public Room(int number, double price) {
         this.number = number;
         this.price = price;
-        this.status = Available;
+        this.status = RoomStatus.AVAILABLE;
     }
 
-    public void checkIn() {
-        if (status.equals(Available)) {
-            status = Occupied;
-            System.out.println("Гость заселился в номер " + number);
+    private Guest currentGuest;
+
+    public void checkIn(Guest guest) {
+        if (status == RoomStatus.AVAILABLE) {
+            status = RoomStatus.OCCUPIED;
+            currentGuest = guest;
+            System.out.println("Гость " + guest.getName() + " заселился в номер " + number);
         } else {
             System.out.println("Номер " + number + " недоступен к заселению");
         }
     }
 
     public void checkOut() {
-        if (status.equals(Occupied)) {
-            status = Available;
-            System.out.println("Гость выселен из номера " + number);
+        if (status == RoomStatus.OCCUPIED) {
+            System.out.println("Гость " + currentGuest.getName() + " выселен из номера " + number);
+            currentGuest = null;
+            status = RoomStatus.AVAILABLE;
         } else {
             System.out.println("Номер " + number + " не занят");
         }
     }
 
-    public void setStatus(String newStatus) {
+    public Guest getCurrentGuest() {
+        return currentGuest;
+    }
+
+    public void setStatus(RoomStatus newStatus) {
         this.status = newStatus;
         System.out.println("Статус номера " + number + " изменен на " + newStatus);
     }
@@ -46,4 +50,5 @@ public class Room {
     public int getNumber() {
         return number;
     }
+
 }

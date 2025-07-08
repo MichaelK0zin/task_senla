@@ -1,16 +1,14 @@
 package flowers;
 
-abstract class Flower {
+public abstract class Flower {
     private String name;
     private double cost;
     private String color;
-    private int amount;
 
-    public Flower(String name, double cost, String color, int amount) {
+    public Flower(String name, double cost, String color) {
         this.name = name;
         this.cost = cost;
         this.color = color;
-        this.amount = amount;
     }
 
     public String getName() {
@@ -25,7 +23,4 @@ abstract class Flower {
         return color;
     }
 
-    public int getAmount() {
-        return amount;
-    }
 }
